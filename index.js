@@ -1,8 +1,9 @@
+import { Configuration, OpenAIApi } from "openai";
+import request from "request";
+import bodyParser from "body-parser";
+import express from "express";
 
-const express = require('express')
-const bodyParser = require('body-parser')
-const request = require('request')
-const OpenAIApi = require('openai')
+
 
 const app = express()
 
