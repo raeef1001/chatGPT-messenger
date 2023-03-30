@@ -17,7 +17,7 @@ app.get('/', function(req, res) {
 	res.send("fucking chatbot")
 })
 
-let token =Process.env.ACCESS_TOKEN
+let token =process.env.ACCESS_TOKEN
 
 // Facebook 
 
@@ -65,3 +65,6 @@ function sendText(sender, text) {
 app.listen(app.get('port'), function() {
 	console.log("running: port")
 })
+
+
+
