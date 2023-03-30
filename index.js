@@ -1,7 +1,6 @@
-import { Express } from "express";
-import bodyParser from "body-parser";
-import request from "request";
-
+const express = require('express')
+const bodyParser = require('body-parser')
+const request = require('request')
 
 const app = express()
 
@@ -17,7 +16,6 @@ app.get('/', function(req, res) {
 	res.send("Hi I am a chatbot")
 })
 
-let token = ""
 
 // Facebook 
 
@@ -27,9 +25,6 @@ app.get('/webhook/', function(req, res) {
 	}
 	res.send("Wrong token")
 })
-
 app.listen(app.get('port'), function() {
 	console.log("running: port")
 })
-
-
