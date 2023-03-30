@@ -14,10 +14,10 @@ app.use(bodyParser.json())
 // ROUTES
 
 app.get('/', function(req, res) {
-	res.send("Hi I am a chatbot")
+	res.send("fucking chatbot")
 })
 
-let token = "EAAM6YRjgYNYBAIv1wVdRwLZAN2xZCbDJGZCdNYcSOKrseRayrx3tfzcM0YQKKYxJSxUrTs03SP2nBvPYlmclCxtcSVdz1G1llZBBZBvU9ZBcygjTrF2n2oro3xZAVbIl1Io6MGOgC5BZAUCPsq1smYlWHd4w2cquhyKGZBmae1IZBMJZCsj7gfw8JZBsA3ZAf3NtUG7zi73ZCKTN8MrQZDZD"
+let token = "EAAM6YRjgYNYBAF6P48zQZCHlI9Aph16qGpn6UUjMCZA6ApP9U4iXT7gZAVgVvNYSQizpshpIIjizJafBqt6XcFou55eemZBkZBmZBJBCcOTIQL51TXn9TpaZBA2s1feCXJ95nT07nBDQk4B7CJgnvICTWHpRqMRWoNSIpbZACdqlNuZAWNcMdPbT6OHaiUvFCUoKAPZBZCm14tZAIwZDZD"
 
 // Facebook 
 
