@@ -2,8 +2,12 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
+const OpenAIApi = require('openai')
 
 const app = express()
+
+
+
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -18,6 +22,28 @@ app.get('/', function(req, res) {
 })
 
 let token =process.env.ACCESS_TOKEN
+let content ;
+let reply ;
+// openai 
+
+const configuration = new Configuration({
+    organization: "org-FxBSLK2LwmJEXT8gUALQSC0s",
+    apiKey:process.env.API_KEY
+});
+const openai = new OpenAIApi(configuration);
+
+async function brain(){
+    const completion = await openai.createChatCompletion({
+        "model": "gpt-3.5-turbo",
+        "messages":[
+            {"role": "user", "content": content},
+           
+        ]
+    });
+    console.log(completion.data.choices[0].message);
+    reply = completion.data.choices[0].message
+}
+
 
 // Facebook 
 
@@ -36,6 +62,8 @@ app.post('/webhook/', function(req, res) {
 		if (event.message && event.message.text) {
 			let text = event.message.text
             console.log(text)
+            content = text
+            brain()
 			sendText(sender, "Text echo: " + text.substring(0, 100))
 		}
 	}
@@ -44,7 +72,7 @@ app.post('/webhook/', function(req, res) {
 
 function sendText(sender, text) {
     console.log(sender,text)
-	let messageData = {text: text}
+	let messageData = {text: reply}
 	request({
 		url: "https://graph.facebook.com/v2.6/me/messages",
 		qs : {access_token: token},
