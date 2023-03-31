@@ -42,9 +42,9 @@ async function brain(sender){
         ]
     });
     console.log(completion.data.choices[0].message);
-    reply = completion.data.choices[0].message
+    reply = completion.data.choices[0].message.content
     console.log(`content :${content},reply :${reply}`)
-    sendText(sender, "Text echo: " + text.substring(0, 100))
+    sendText(sender,reply)
 }
 
     
@@ -77,8 +77,8 @@ app.post('/webhook/', function(req, res) {
 	res.sendStatus(200)
 })
 
-function sendText(sender, text) {
-    console.log(sender,text)
+function sendText(sender, reply) {
+    console.log(sender,reply)
 	let messageData = {text: reply}
     console.log(`getting the messge reply: ${messageData}`)
 	request({
