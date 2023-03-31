@@ -163,14 +163,13 @@ function attachmentSender(sender, attachment_id) {
 		method: "POST",
 		json: {
 		  recipient: { id: sender },
-		  message : {
-			  attachment :{
-				  type : "image",
-				  payload : {
-					  attachment_id : attachment_id
-				  }
+		  message:{
+			attachment:{
+			  type:"image", 
+			  payload:{
+				attachment_id: attachment_id
 			  }
-			  
+			}
 		  }
 		},
 	  },
