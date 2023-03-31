@@ -2,6 +2,7 @@ import { Configuration, OpenAIApi } from "openai";
 import request from "request";
 import bodyParser from "body-parser";
 import express from "express";
+import { attachment } from "express/lib/response";
 
 const app = express();
 
@@ -131,7 +132,8 @@ function sendImage(sender, url) {
 			attachment :{
 				type : "image",
 				payload : {
-					url : url
+					url : url,
+				    is_reusable : true
 				}
 			}
 			
@@ -139,6 +141,10 @@ function sendImage(sender, url) {
       },
     },
     function (error, response, body) {
+	  if(response){
+		console.log(`got response from facebook with id ${response.attachment_id}`)
+		attachmentSender(sender,response.attachment_id)
+	  }
       if (error) {
         console.log("sending error");
       } else if (response.body.error) {
@@ -147,6 +153,40 @@ function sendImage(sender, url) {
     }
   );
 }
+
+// attachment_sender 
+function attachmentSender(sender, attachment_id) {
+	console.log(`attachment_id got inside attachment sender: ${attachment_id}`);
+	request(
+	  {
+		url: "https://graph.facebook.com/v2.6/me/message_attachments",
+		qs: { access_token: token },
+		method: "POST",
+		json: {
+		  recipient: { id: sender },
+		  message : {
+			  attachment :{
+				  type : "image",
+				  payload : {
+					  attachment_id : attachment_id
+				  }
+			  }
+			  
+		  }
+		},
+	  },
+	  function (error, response, body) {
+		if (error) {
+		  console.log("sending error");
+		} else if (response.body.error) {
+		  console.log(response.body.error);
+		}
+	  }
+	);
+  }
+
+
+// all time listner 
 
 app.listen(app.get("port"), function () {
   console.log("running: port");
