@@ -119,7 +119,7 @@ function sendText(sender, reply) {
 // send image
 
 function sendImage(sender, url) {
-  console.log(`url got inside sendimage: ${url}`);
+  console.log(`url got inside sendimage: ${url} and sender ${sender}`);
   request(
     {
       url: "https://graph.facebook.com/v2.6/me/message_attachments",
@@ -131,8 +131,7 @@ function sendImage(sender, url) {
 			attachment :{
 				type : "image",
 				payload : {
-					url : url,
-				    is_reusable : true
+					url : "https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cmFuZG9tfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
 				}
 			}
 			
@@ -140,10 +139,10 @@ function sendImage(sender, url) {
       },
     },
     function (error, response, body) {
-	  if(response.body.attachment_id){
-		console.log(`got response from facebook with id ${response.body.attachment_id}`)
-		attachmentSender(sender,response.body.attachment_id)
-	  }
+	//   if(response.body.attachment_id){
+	// 	console.log(`got response from facebook with id ${response.body.attachment_id}`)
+	// 	attachmentSender(sender,response.body.attachment_id)
+	//   }
       if (error) {
         console.log("sending error");
       } else if (response.body.error) {
@@ -154,34 +153,35 @@ function sendImage(sender, url) {
 }
 
 // attachment_sender 
-function attachmentSender(sender, attachment_id) {
-	console.log(`attachment_id got inside attachment sender: ${attachment_id}`);
-	request(
-	  {
-		url: "https://graph.facebook.com/v2.6/me/message_attachments",
-		qs: { access_token: token },
-		method: "POST",
-		json: {
-		  recipient: { id: sender },
-		  message:{
-			attachment:{
-			  type:"image", 
-			  payload:{
-				attachment_id: attachment_id
-			  }
-			}
-		  }
-		},
-	  },
-	  function (error, response, body) {
-		if (error) {
-		  console.log("sending error");
-		} else if (response.body.error) {
-		  console.log(response.body.error);
-		}
-	  }
-	);
-  }
+// function attachmentSender(sender, attachment_id) {
+// 	console.log(`attachment_id got inside attachment sender: ${attachment_id}`);
+// 	request(
+// 	  {
+// 		url: "https://graph.facebook.com/v2.6/me/message_attachments",
+// 		qs: { access_token: token },
+		
+// 		method: "POST",
+// 		json: {
+// 		  recipient: { id: sender },
+// 		  message:{
+// 			attachment:{
+// 			  type:"image", 
+// 			  payload:{
+// 				attachment_id: attachment_id
+// 			  }
+// 			}
+// 		  }
+// 		},
+// 	  },
+// 	  function (error, response, body) {
+// 		if (error) {
+// 		  console.log("sending error");
+// 		} else if (response.body.error) {
+// 		  console.log(response.body.error);
+// 		}
+// 	  }
+// 	);
+//   }
 
 
 // all time listner 
