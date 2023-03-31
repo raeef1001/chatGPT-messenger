@@ -141,7 +141,7 @@ function sendImage(sender, url) {
       },
     },
     function (error, response, body) {
-	  if(response){
+	  if(response.body.attachment_id){
 		console.log(`got response from facebook with id ${response.body.attachment_id}`)
 		attachmentSender(sender,response.body.attachment_id)
 	  }
