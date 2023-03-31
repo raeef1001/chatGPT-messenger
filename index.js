@@ -122,12 +122,17 @@ function sendImage(sender, url) {
   console.log(`url got inside sendimage: ${url}`);
   request(
     {
-      url: "https://graph.facebook.com/v2.10/me/message_attachments",
+      url: "https://graph.facebook.com/v2.6/me/message_attachments",
       qs: { access_token: token },
       method: "POST",
       json: {
         recipient: { id: sender },
-        url: url,
+		message : {
+			type : "image",
+			payload : {
+				url : url
+			}
+		}
       },
     },
     function (error, response, body) {
