@@ -46,6 +46,7 @@ async function brain(sender) {
 
 // openai image
 async function imageGenerator(sender,prompt) {
+	console.log(`got the prompt inside image generator ${prompt}`);
 	const result = await openai.createImage({
 		prompt,
 		n:1,
