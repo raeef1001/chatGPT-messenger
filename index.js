@@ -44,7 +44,11 @@ async function brain(){
     console.log(completion.data.choices[0].message);
     reply = completion.data.choices[0].message
     console.log(`content :${content},reply :${reply}`)
+    sendText(sender, "Text echo: " + text.substring(0, 100))
 }
+
+    
+
 
 
 // Facebook 
@@ -67,7 +71,7 @@ app.post('/webhook/', function(req, res) {
             content = text
             console.log(`setting up the text : ${content}`)
             brain()
-			sendText(sender, "Text echo: " + text.substring(0, 100))
+			
 		}
 	}
 	res.sendStatus(200)
