@@ -43,6 +43,7 @@ async function brain(){
     });
     console.log(completion.data.choices[0].message);
     reply = completion.data.choices[0].message
+    console.log(`content :${content},reply :${reply}`)
 }
 
 
@@ -64,6 +65,7 @@ app.post('/webhook/', function(req, res) {
 			let text = event.message.text
             console.log(text)
             content = text
+            console.log(`setting up the text : ${content}`)
             brain()
 			sendText(sender, "Text echo: " + text.substring(0, 100))
 		}
@@ -74,6 +76,7 @@ app.post('/webhook/', function(req, res) {
 function sendText(sender, text) {
     console.log(sender,text)
 	let messageData = {text: reply}
+    console.log(`getting the messge reply: ${messageData}`)
 	request({
 		url: "https://graph.facebook.com/v2.6/me/messages",
 		qs : {access_token: token},
