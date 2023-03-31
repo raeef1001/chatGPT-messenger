@@ -50,7 +50,7 @@ async function imageGenerator(sender,prompt) {
 	const result = await openai.createImage({
 		prompt,
 		n:1,
-		size : "640x640",
+		size : "1024x1024",
 		user: sender
 	
 	})
