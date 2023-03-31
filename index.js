@@ -33,7 +33,7 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-async function brain(){
+async function brain(sender){
     const completion = await openai.createChatCompletion({
         "model": "gpt-3.5-turbo",
         "messages":[
@@ -70,7 +70,7 @@ app.post('/webhook/', function(req, res) {
             console.log(text)
             content = text
             console.log(`setting up the text : ${content}`)
-            brain()
+            brain(sender)
 			
 		}
 	}
