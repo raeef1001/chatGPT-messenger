@@ -128,10 +128,13 @@ function sendImage(sender, url) {
       json: {
         recipient: { id: sender },
 		message : {
-			type : "image",
-			payload : {
-				url : url
+			attachment :{
+				type : "image",
+				payload : {
+					url : url
+				}
 			}
+			
 		}
       },
     },
