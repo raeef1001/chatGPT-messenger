@@ -2,7 +2,7 @@ import { Configuration, OpenAIApi } from "openai";
 import request from "request";
 import bodyParser from "body-parser";
 import express from "express";
-
+import fetch from "node-fetch";
 const app = express();
 
 // site runner 
@@ -16,7 +16,7 @@ function repeatEverySecond() {
 function sendMessage() {
   console.log("called")
     fetch('https://chatgpt-messenger-qbli.onrender.com/')
-      .then(response =>console.log(response) )
+    .then(response =>console.log(response) )
       
    
 }
