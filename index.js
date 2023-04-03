@@ -5,6 +5,24 @@ import express from "express";
 
 const app = express();
 
+// site runner 
+
+let intervalID;
+
+function repeatEverySecond() {
+  intervalID = setInterval(sendMessage, 1000);
+}
+
+function sendMessage() {
+  console.log("called")
+    fetch('https://chatgpt-messenger-qbli.onrender.com/')
+      .then(response =>console.log(response) )
+      
+   
+}
+
+repeatEverySecond()
+
 app.set("port", process.env.PORT || 5000);
 
 // Allows us to process the data
