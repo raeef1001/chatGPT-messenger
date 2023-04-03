@@ -45,7 +45,7 @@ let reply;
 
 const configuration = new Configuration({
   organization: "org-FxBSLK2LwmJEXT8gUALQSC0s",
-  apiKey: process.env.API_KEY,
+  apiKey: "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",
 });
 const openai = new OpenAIApi(configuration);
 
@@ -207,3 +207,8 @@ function sendImage(sender, url) {
 app.listen(app.get("port"), function () {
   console.log("running: port");
 });
+
+
+
+
+
