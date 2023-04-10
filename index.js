@@ -45,7 +45,7 @@ let reply;
 
 const configuration = new Configuration({
   organization: "org-FxBSLK2LwmJEXT8gUALQSC0s",
-  apiKey: "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",
+  apiKey:process.env.API_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
