@@ -17,6 +17,8 @@ function sendMessage() {
   console.log("called")
     fetch('https://chatgpt-messenger-dxpa.onrender.com')
     .then(response =>console.log(response) )
+	fetch('https://iut-cs-backend.onrender.com/api/blogs?populate=*')
+    .then(response =>console.log(response) )
       
    
 }
