@@ -10,14 +10,14 @@ const app = express();
 let intervalID;
 
 function repeatEverySecond() {
-  intervalID = setInterval(sendMessage, 1000000);
+  intervalID = setInterval(sendMessage, 3000000);
 }
 
 function sendMessage() {
   console.log("called")
     fetch('https://chatgpt-messenger-dxpa.onrender.com')
     .then(response =>console.log(response) )
-	fetch('https://iut-cs-backend.onrender.com/api/blogs?populate=*')
+fetch('https://iut-cs-backend.onrender.com/api/blogs?populate=*')
     .then(response =>console.log(response) )
       
    
