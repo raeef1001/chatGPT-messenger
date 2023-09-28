@@ -17,14 +17,14 @@ function repeatEverySecond() {
 function sendMessage() {
   console.log("called")
     fetch('https://chatgpt-messenger-dxpa.onrender.com')
-    .then(response =>console.log(response) )
+    .then(response =>console.log("chat_server_is_running") )
 
    
 }
 function sendIut() {
   console.log("called iutcs")
    fetch('https://iut-cs-backend.onrender.com/api/blogs?populate=*')
-    .then(response =>console.log(response.data[0].id) )
+    .then(response =>console.log(response) )
    
 }
 
