@@ -10,8 +10,8 @@ const app = express();
 let intervalID;
 
 function repeatEverySecond() {
-  intervalID = setInterval(sendMessage, 3000000);
- intervalID = setInterval(sendIut, 3000000);
+  intervalID = setInterval(sendMessage, 120000);
+ intervalID = setInterval(sendIut, 120000);
 }
 
 function sendMessage() {
