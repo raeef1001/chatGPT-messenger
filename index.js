@@ -11,15 +11,20 @@ let intervalID;
 
 function repeatEverySecond() {
   intervalID = setInterval(sendMessage, 3000000);
+ intervalID = setInterval(sendIut, 3000000);
 }
 
 function sendMessage() {
   console.log("called")
     fetch('https://chatgpt-messenger-dxpa.onrender.com')
     .then(response =>console.log(response) )
-fetch('https://iut-cs-backend.onrender.com/api/blogs?populate=*')
-    .then(response =>console.log(response) )
-      
+
+   
+}
+function sendIut() {
+  console.log("called iutcs")
+   fetch('https://iut-cs-backend.onrender.com/api/blogs?populate=*')
+    .then(response =>console.log(response.data[0].id) )
    
 }
 
