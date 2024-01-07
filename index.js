@@ -3,7 +3,7 @@ import request from "request";
 import bodyParser from "body-parser";
 import express from "express";
 import fetch from "node-fetch";
-const fs = require('fs');
+import fs from "fs";
 const app = express();
 
 // site runner 
